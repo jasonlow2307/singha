@@ -5,16 +5,20 @@ const Header = () => {
   return (
     <AppBar position="static" color="transparent" elevation={0}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <Typography variant="h6" color="primary">
-          Sitemark
-        </Typography>
+        <Box
+          component="img"
+          src={`${process.env.PUBLIC_URL}/logo.png`}
+          alt="Logo"
+          sx={{
+            width: 100,
+            borderRadius: 2,
+            boxShadow: 3,
+            my: 2.5,
+          }}
+        />
         <Box>
-          <Button color="inherit">Features</Button>
-          <Button color="inherit">Testimonials</Button>
-          <Button color="inherit">Pricing</Button>
-          <Button color="inherit">Sign In</Button>
           <Button variant="contained" color="primary">
-            Sign Up
+            购买
           </Button>
         </Box>
       </Toolbar>
