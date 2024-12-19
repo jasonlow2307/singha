@@ -7,14 +7,17 @@ const App = () => {
   return (
     <div
       style={{
-        maxHeight: "100vh", // Set the maximum height to the viewport height
-        overflow: "hidden", // Hide any overflowing content
+        minHeight: "100vh", // Ensure the total height is at least the viewport height
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "column", // Arrange children vertically
       }}
     >
       <Header />
-      <Hero />
+      {/* Main content fills the available space */}
+      <div style={{ flex: 1, overflow: "auto" }}>
+        <Hero />
+      </div>
+      {/* Footer stays at the bottom */}
       <Footer />
     </div>
   );

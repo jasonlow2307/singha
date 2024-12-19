@@ -8,6 +8,7 @@ import {
   Container,
   Grid,
   Paper,
+  Link,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 
@@ -373,7 +374,7 @@ const Hero = () => {
       {/* Contact Us Section */}
       <Box
         sx={{
-          height: "calc(100vh - 140px)",
+          height: "calc(100vh - 0px)",
           scrollSnapAlign: "start",
           display: "flex",
           alignItems: "center",
@@ -396,26 +397,33 @@ const Hero = () => {
               <Typography variant="body1" sx={{ mb: 3 }} fontSize={20}>
                 如果您有任何问题或需要咨询，请随时联系我们，我们将竭诚为您服务！
               </Typography>
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#fff",
-                  color: "#FF7A59",
-                  px: 4,
-                  py: 1.5,
-                  gap: 1,
-                  borderRadius: 3,
-                  "&:hover": { backgroundColor: "#FFEDD5" },
-                }}
+              <Link
+                href="https://wa.me/60193205676?text=Hello!%20I%20would%20like%20to%20inquire%20about%20Singha.
+"
+                target="_blank"
+                rel="noopener"
               >
-                <Icon
-                  icon="fluent:call-16-filled"
-                  width="24"
-                  height="24"
-                  color="#FF7A59"
-                />
-                立即联系
-              </Button>
+                <Button
+                  variant="contained"
+                  sx={{
+                    backgroundColor: "#fff",
+                    color: "#FF7A59",
+                    px: 4,
+                    py: 1.5,
+                    gap: 1,
+                    borderRadius: 3,
+                    "&:hover": { backgroundColor: "#FFEDD5" },
+                  }}
+                >
+                  <Icon
+                    icon="fluent:call-16-filled"
+                    width="24"
+                    height="24"
+                    color="#FF7A59"
+                  />
+                  立即联系
+                </Button>
+              </Link>
             </Grid>
 
             {/* Right Section (Image) */}
