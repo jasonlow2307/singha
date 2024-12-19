@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Footer from "./components/Footer";
+import ShoppingPage from "./components/ShoppingPage";
+import ShoppingCartPage from "./components/ShoppingCart";
 
 const App = () => {
+  // State to toggle between Hero and ShoppingPage
+  const [currentPage, setCurrentPage] = useState("home");
+
+  const handleNavigate = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div
       style={{
-        minHeight: "100vh", // Ensure the total height is at least the viewport height
+        minHeight: "100vh",
         display: "flex",
-        flexDirection: "column", // Arrange children vertically
+        flexDirection: "column",
       }}
     >
-      <Header />
-      {/* Main content fills the available space */}
+      <Header onNavigate={handleNavigate} />
       <div style={{ flex: 1, overflow: "auto" }}>
-        <Hero />
+        {currentPage === "home" && <Hero />}
+        {currentPage === "shopping" && <ShoppingPage />}
+        {currentPage === "shoppingCart" && <ShoppingCartPage />}
       </div>
-      {/* Footer stays at the bottom */}
       <Footer />
     </div>
   );

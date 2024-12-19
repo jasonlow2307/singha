@@ -100,6 +100,130 @@ const Hero = () => {
         </Container>
       </Box>
 
+      {/* Products Section */}
+      <Box
+        sx={{
+          height: "calc(100vh - 140px)",
+          scrollSnapAlign: "start",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <Container maxWidth="lg">
+          <Typography
+            variant="h3"
+            component="h3"
+            fontWeight="bold"
+            align="center"
+            sx={{ mb: 6, color: "#FF7A59" }}
+          >
+            热门海鲜产品
+          </Typography>
+          <Grid container spacing={4}>
+            {[
+              {
+                name: "老虎虾",
+                image: "/products/black_tiger_prawn.jpg",
+                description: "优质老虎虾，肉质鲜嫩，适合烧烤或爆炒。",
+              },
+              {
+                name: "鱿鱼圈",
+                image: "/products/sotong_ring.jpg",
+                description: "精选鱿鱼圈，适合炸制或搭配沙拉。",
+              },
+              {
+                name: "明虾",
+                image: "/products/white_prawn_4150.jpg",
+                description: "明虾含高蛋白，适合清蒸或红烧。",
+              },
+            ].map((product, index) => (
+              <Grid item xs={12} sm={4} key={index}>
+                <Box
+                  sx={{
+                    perspective: "1000px",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      position: "relative",
+                      width: "100%",
+                      height: "275px",
+                      transformStyle: "preserve-3d",
+                      transition: "transform 0.6s",
+                      "&:hover": {
+                        transform: "rotateY(180deg)",
+                      },
+                    }}
+                  >
+                    {/* Front of the card */}
+                    <Paper
+                      elevation={3}
+                      sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        backfaceVisibility: "hidden",
+                        borderRadius: 2,
+                        overflow: "hidden",
+                        textAlign: "center",
+                      }}
+                    >
+                      <Box
+                        component="img"
+                        src={product.image}
+                        alt={product.name}
+                        sx={{
+                          width: "100%",
+                          height: 200,
+                          objectFit: "cover",
+                        }}
+                      />
+                      <Box sx={{ p: 2 }}>
+                        <Typography
+                          variant="h6"
+                          fontWeight="bold"
+                          fontSize={25}
+                        >
+                          {product.name}
+                        </Typography>
+                      </Box>
+                    </Paper>
+
+                    {/* Back of the card */}
+                    <Paper
+                      elevation={3}
+                      sx={{
+                        position: "absolute",
+                        top: 0,
+                        left: -15,
+                        width: "100%",
+                        height: "275px",
+                        backfaceVisibility: "hidden",
+                        transform: "rotateY(180deg)",
+                        borderRadius: 2,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        textAlign: "center",
+                        backgroundColor: "#FF7A59",
+                        color: "white",
+                        p: 2,
+                      }}
+                    >
+                      <Typography variant="body1" fontSize={25}>
+                        {product.description}
+                      </Typography>
+                    </Paper>
+                  </Box>
+                </Box>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+
       {/* About Us Section */}
       <Box
         sx={{
@@ -241,130 +365,6 @@ const Hero = () => {
                     {service.description}
                   </Typography>
                 </Paper>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Products Section */}
-      <Box
-        sx={{
-          height: "calc(100vh - 140px)",
-          scrollSnapAlign: "start",
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <Container maxWidth="lg">
-          <Typography
-            variant="h3"
-            component="h3"
-            fontWeight="bold"
-            align="center"
-            sx={{ mb: 6, color: "#FF7A59" }}
-          >
-            热门海鲜产品
-          </Typography>
-          <Grid container spacing={4}>
-            {[
-              {
-                name: "老虎虾",
-                image: "black_tiger_prawn.jpg",
-                description: "优质老虎虾，肉质鲜嫩，适合烧烤或爆炒。",
-              },
-              {
-                name: "鱿鱼圈",
-                image: "sotong_ring.jpg",
-                description: "精选鱿鱼圈，适合炸制或搭配沙拉。",
-              },
-              {
-                name: "明虾",
-                image: "white_prawn.jpg",
-                description: "明虾含高蛋白，适合清蒸或红烧。",
-              },
-            ].map((product, index) => (
-              <Grid item xs={12} sm={4} key={index}>
-                <Box
-                  sx={{
-                    perspective: "1000px",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      position: "relative",
-                      width: "100%",
-                      height: "275px",
-                      transformStyle: "preserve-3d",
-                      transition: "transform 0.6s",
-                      "&:hover": {
-                        transform: "rotateY(180deg)",
-                      },
-                    }}
-                  >
-                    {/* Front of the card */}
-                    <Paper
-                      elevation={3}
-                      sx={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        backfaceVisibility: "hidden",
-                        borderRadius: 2,
-                        overflow: "hidden",
-                        textAlign: "center",
-                      }}
-                    >
-                      <Box
-                        component="img"
-                        src={product.image}
-                        alt={product.name}
-                        sx={{
-                          width: "100%",
-                          height: 200,
-                          objectFit: "cover",
-                        }}
-                      />
-                      <Box sx={{ p: 2 }}>
-                        <Typography
-                          variant="h6"
-                          fontWeight="bold"
-                          fontSize={25}
-                        >
-                          {product.name}
-                        </Typography>
-                      </Box>
-                    </Paper>
-
-                    {/* Back of the card */}
-                    <Paper
-                      elevation={3}
-                      sx={{
-                        position: "absolute",
-                        top: 0,
-                        left: -15,
-                        width: "100%",
-                        height: "275px",
-                        backfaceVisibility: "hidden",
-                        transform: "rotateY(180deg)",
-                        borderRadius: 2,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        textAlign: "center",
-                        backgroundColor: "#FF7A59",
-                        color: "white",
-                        p: 2,
-                      }}
-                    >
-                      <Typography variant="body1" fontSize={25}>
-                        {product.description}
-                      </Typography>
-                    </Paper>
-                  </Box>
-                </Box>
               </Grid>
             ))}
           </Grid>
