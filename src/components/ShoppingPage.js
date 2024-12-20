@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -6,24 +6,15 @@ import {
   Snackbar,
   Alert,
   IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 import CloseIcon from "@mui/icons-material/Close";
 import ProductCard from "./ProductCard";
+import { useShoppingCart } from "../providers/ShoppingCartProvider";
 
 const ShoppingPage = () => {
-  const [snackbar, setSnackbar] = useState({
-    open: false,
-    message: "",
-  });
-  const [shoppingCart, setShoppingCart] = useState([]);
+  const { shoppingCart, addToCart } = useShoppingCart();
+  const [snackbar, setSnackbar] = useState({ open: false, message: "" });
 
   const products = [
     {
@@ -57,39 +48,12 @@ const ShoppingPage = () => {
   ];
 
   const handleAddToCart = (product, quantity) => {
-    const existingProductIndex = shoppingCart.findIndex(
-      (item) => item.id === product.id
-    );
-
-    if (existingProductIndex !== -1) {
-      // If the product exists, update its quantity
-      const updatedCart = [...shoppingCart];
-      updatedCart[existingProductIndex].quantity += quantity;
-      updatedCart[existingProductIndex].subtotal =
-        updatedCart[existingProductIndex].quantity * product.price;
-      setShoppingCart(updatedCart);
-    } else {
-      // If the product doesn't exist, add it to the cart
-      setShoppingCart([
-        ...shoppingCart,
-        {
-          ...product,
-          quantity,
-          subtotal: quantity * product.price, // Calculate subtotal
-        },
-      ]);
-    }
-
-    // Show a success snackbar
+    addToCart(product, quantity);
     setSnackbar({
       open: true,
       message: `已将 ${product.name} (${quantity} 件) 添加到购物车!`,
     });
   };
-
-  useEffect(() => {
-    console.log("SHOPPING CART", shoppingCart);
-  }, [shoppingCart]);
 
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") return;
@@ -139,42 +103,6 @@ const ShoppingPage = () => {
           </Grid>
         ))}
       </Grid>
-
-      <Box sx={{ mt: 6, width: "100%", maxWidth: "900px" }}>
-        <Typography variant="h5" sx={{ mb: 3, fontWeight: "bold" }}>
-          购物车
-        </Typography>
-        {shoppingCart.length > 0 ? (
-          <TableContainer component={Paper}>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>产品名称</TableCell>
-                  <TableCell align="center">单价 (¥)</TableCell>
-                  <TableCell align="center">数量</TableCell>
-                  <TableCell align="center">小计 (¥)</TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {shoppingCart.map((item) => (
-                  <TableRow key={item.id}>
-                    <TableCell>{item.name}</TableCell>
-                    <TableCell align="center">
-                      {item.price.toFixed(2)}
-                    </TableCell>
-                    <TableCell align="center">{item.quantity}</TableCell>
-                    <TableCell align="center">
-                      {item.subtotal.toFixed(2)}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        ) : (
-          <Typography variant="body1">购物车为空</Typography>
-        )}
-      </Box>
 
       <Snackbar
         open={snackbar.open}

@@ -1,146 +1,181 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
   Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Divider,
+  Snackbar,
+  Alert,
 } from "@mui/material";
+import { useShoppingCart } from "../providers/ShoppingCartProvider";
 
 const ShoppingCartPage = () => {
-  // Mock cart items
-  const cartItems = [
-    {
-      id: 1,
-      name: "Wireless Headphones",
-      price: 120.0,
-      quantity: 1,
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      id: 2,
-      name: "Smartphone Stand",
-      price: 25.0,
-      quantity: 2,
-      image: "https://via.placeholder.com/150",
-    },
-  ];
-
-  const handleCheckout = () => {
-    alert("Proceeding to checkout...");
-  };
+  const { shoppingCart } = useShoppingCart();
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+  });
 
   const calculateTotal = () =>
-    cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    shoppingCart.reduce((total, item) => total + item.subtotal, 0);
+
+  const handleCheckout = () => {
+    setSnackbar({
+      open: true,
+      message: "正在结账...",
+    });
+  };
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") return;
+    setSnackbar({ open: false, message: "" });
+  };
 
   return (
     <Box
       sx={{
-        p: 4,
-        bgcolor: "#f5f5f5",
+        background: "linear-gradient(to bottom right, #F48E02, #FFB74D)",
         minHeight: "100vh",
+        p: 4,
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
       }}
     >
-      {/* Header */}
-      <Typography variant="h4" sx={{ mb: 3, fontWeight: "bold" }}>
-        Shopping Cart
-      </Typography>
-
-      {/* Cart Items */}
-      <Box
+      {/* Page Header */}
+      <Typography
+        variant="h4"
         sx={{
-          width: "100%",
-          maxWidth: "800px",
-          bgcolor: "#fff",
-          borderRadius: 4,
-          boxShadow: "0px 2px 5px rgba(0,0,0,0.1)",
-          p: 2,
+          mb: 3,
+          fontWeight: "bold",
+          color: "#fff",
+          textShadow: "1px 1px 5px rgba(0, 0, 0, 0.3)",
         }}
       >
-        {cartItems.map((item) => (
-          <Card
-            key={item.id}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              mb: 2,
-              borderRadius: 2,
-              boxShadow: "none",
-              border: "1px solid #e0e0e0",
-            }}
-          >
-            {/* Product Image */}
-            <CardMedia
-              component="img"
-              image={item.image}
-              alt={item.name}
-              sx={{
-                width: 100,
-                height: 100,
-                borderRadius: 2,
-                objectFit: "cover",
-                m: 1,
-              }}
-            />
-            {/* Product Details */}
-            <CardContent
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                flexGrow: 1,
-                gap: 1,
-              }}
-            >
-              <Typography variant="h6" fontWeight="bold">
-                {item.name}
-              </Typography>
-              <Typography variant="body2" color="textSecondary">
-                Quantity: {item.quantity}
-              </Typography>
-              <Typography variant="body1" fontWeight="bold">
-                ${item.price.toFixed(2)}
-              </Typography>
-            </CardContent>
-            <Typography
-              sx={{
-                fontWeight: "bold",
-                mr: 2,
-              }}
-            >
-              ${item.price * item.quantity}
-            </Typography>
-          </Card>
-        ))}
-        {/* Divider */}
-        <Divider sx={{ my: 2 }} />
-        {/* Total Section */}
+        购物车
+      </Typography>
+
+      {/* Shopping Cart Table */}
+      {shoppingCart.length > 0 ? (
+        <TableContainer
+          component={Paper}
+          sx={{
+            maxWidth: "900px",
+            borderRadius: 4,
+            boxShadow: "0px 4px 10px rgba(0,0,0,0.1)",
+          }}
+        >
+          <Table>
+            <TableHead>
+              <TableRow
+                sx={{
+                  bgcolor: "#F48E02",
+                }}
+              >
+                <TableCell sx={{ color: "#fff", fontWeight: "bold" }}>
+                  产品名称
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{ color: "#fff", fontWeight: "bold" }}
+                >
+                  单价 (¥)
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{ color: "#fff", fontWeight: "bold" }}
+                >
+                  数量
+                </TableCell>
+                <TableCell
+                  align="center"
+                  sx={{ color: "#fff", fontWeight: "bold" }}
+                >
+                  小计 (¥)
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {shoppingCart.map((item) => (
+                <TableRow
+                  key={item.id}
+                  sx={{
+                    "&:hover": {
+                      bgcolor: "#FFF5E0",
+                    },
+                  }}
+                >
+                  <TableCell>{item.name}</TableCell>
+                  <TableCell align="center">{item.price.toFixed(2)}</TableCell>
+                  <TableCell align="center">{item.quantity}</TableCell>
+                  <TableCell align="center">
+                    {item.subtotal.toFixed(2)}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      ) : (
+        <Typography
+          variant="body1"
+          color="#fff"
+          sx={{
+            mt: 4,
+            fontWeight: "bold",
+            textShadow: "1px 1px 5px rgba(0, 0, 0, 0.3)",
+          }}
+        >
+          购物车为空
+        </Typography>
+      )}
+
+      {/* Total Section */}
+      {shoppingCart.length > 0 && (
         <Box
           sx={{
+            mt: 4,
+            width: "100%",
+            maxWidth: "900px",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            bgcolor: "#FFF5E0",
+            p: 2,
+            borderRadius: 4,
+            boxShadow: "0px 2px 5px rgba(0,0,0,0.1)",
           }}
         >
           <Typography variant="h6" fontWeight="bold">
-            Total:
+            总计:
           </Typography>
-          <Typography variant="h6" fontWeight="bold">
-            ${calculateTotal().toFixed(2)}
+          <Typography
+            variant="h6"
+            fontWeight="bold"
+            sx={{ color: "#F48E02", fontSize: "1.5rem" }}
+          >
+            ¥{calculateTotal().toFixed(2)}
           </Typography>
         </Box>
-        {/* Checkout Button */}
+      )}
+
+      {/* Checkout Button */}
+      {shoppingCart.length > 0 && (
         <Button
           variant="contained"
-          color="primary"
-          fullWidth
           sx={{
-            mt: 3,
+            mt: 4,
             py: 1.5,
+            px: 4,
+            fontSize: "1.2rem",
+            fontWeight: "bold",
+            color: "#fff",
             borderRadius: 3,
             background: "linear-gradient(to right, #4caf50, #81c784)",
             "&:hover": {
@@ -149,9 +184,25 @@ const ShoppingCartPage = () => {
           }}
           onClick={handleCheckout}
         >
-          Proceed to Checkout
+          去结账
         </Button>
-      </Box>
+      )}
+
+      {/* Snackbar */}
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity="success"
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
