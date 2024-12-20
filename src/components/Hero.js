@@ -245,7 +245,7 @@ const Hero = () => {
             关于我们
           </Typography>
           <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={4.5}>
               <Box
                 component="img"
                 src={`${process.env.PUBLIC_URL}/about_us.png`}

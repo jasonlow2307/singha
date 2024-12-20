@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   Typography,
@@ -7,11 +7,19 @@ import {
   CardMedia,
   Button,
   Grid,
+  Snackbar,
+  Alert,
+  IconButton,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
+import CloseIcon from "@mui/icons-material/Close";
 
 const ShoppingPage = () => {
-  // Seafood product data
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+  });
+
   const products = [
     {
       id: 1,
@@ -44,7 +52,15 @@ const ShoppingPage = () => {
   ];
 
   const handleAddToCart = (productName) => {
-    alert(`已将 ${productName} 添加到购物车!`);
+    setSnackbar({
+      open: true,
+      message: `已将 ${productName} 添加到购物车!`,
+    });
+  };
+
+  const handleCloseSnackbar = (event, reason) => {
+    if (reason === "clickaway") return;
+    setSnackbar({ ...snackbar, open: false });
   };
 
   return (
@@ -60,12 +76,11 @@ const ShoppingPage = () => {
         background: "linear-gradient(to bottom right, #F48E02, #FFB74D)",
       }}
     >
-      {/* Header */}
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
-          gap: 1, // Add spacing between the icon and text
+          gap: 1,
           mb: 4,
         }}
       >
@@ -84,7 +99,6 @@ const ShoppingPage = () => {
         </Typography>
       </Box>
 
-      {/* Products Grid */}
       <Grid container spacing={4} sx={{ maxWidth: "900px" }}>
         {products.map((product) => (
           <Grid item xs={12} sm={6} key={product.id}>
@@ -99,7 +113,6 @@ const ShoppingPage = () => {
                 },
               }}
             >
-              {/* Product Image */}
               <CardMedia
                 component="img"
                 image={product.image}
@@ -112,8 +125,6 @@ const ShoppingPage = () => {
                   borderRadius: "12px",
                 }}
               />
-
-              {/* Product Details */}
               <CardContent sx={{ textAlign: "center" }}>
                 <Typography
                   variant="h6"
@@ -161,6 +172,31 @@ const ShoppingPage = () => {
           </Grid>
         ))}
       </Grid>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity="success"
+          action={
+            <IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleCloseSnackbar}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          }
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };

@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Footer from "./components/Footer";
 import ShoppingPage from "./components/ShoppingPage";
 import ShoppingCartPage from "./components/ShoppingCart";
+import { SnackbarProvider } from "notistack";
 
 const App = () => {
   // State to toggle between Hero and ShoppingPage
@@ -21,12 +22,14 @@ const App = () => {
         flexDirection: "column",
       }}
     >
-      <Header onNavigate={handleNavigate} />
-      <div style={{ flex: 1, overflow: "auto" }}>
-        {currentPage === "home" && <Hero />}
-        {currentPage === "shopping" && <ShoppingPage />}
-        {currentPage === "shoppingCart" && <ShoppingCartPage />}
-      </div>
+      <SnackbarProvider>
+        <Header onNavigate={handleNavigate} />
+        <div style={{ flex: 1, overflow: "auto" }}>
+          {currentPage === "home" && <Hero />}
+          {currentPage === "shopping" && <ShoppingPage />}
+          {currentPage === "shoppingCart" && <ShoppingCartPage />}
+        </div>
+      </SnackbarProvider>
       <Footer />
     </div>
   );
