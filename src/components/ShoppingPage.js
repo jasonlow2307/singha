@@ -1,24 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
-  Card,
-  CardContent,
-  CardMedia,
-  Button,
   Grid,
   Snackbar,
   Alert,
   IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 import CloseIcon from "@mui/icons-material/Close";
+import ProductCard from "./ProductCard";
 
 const ShoppingPage = () => {
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
   });
+  const [shoppingCart, setShoppingCart] = useState([]);
 
   const products = [
     {
@@ -51,12 +56,40 @@ const ShoppingPage = () => {
     },
   ];
 
-  const handleAddToCart = (productName) => {
+  const handleAddToCart = (product, quantity) => {
+    const existingProductIndex = shoppingCart.findIndex(
+      (item) => item.id === product.id
+    );
+
+    if (existingProductIndex !== -1) {
+      // If the product exists, update its quantity
+      const updatedCart = [...shoppingCart];
+      updatedCart[existingProductIndex].quantity += quantity;
+      updatedCart[existingProductIndex].subtotal =
+        updatedCart[existingProductIndex].quantity * product.price;
+      setShoppingCart(updatedCart);
+    } else {
+      // If the product doesn't exist, add it to the cart
+      setShoppingCart([
+        ...shoppingCart,
+        {
+          ...product,
+          quantity,
+          subtotal: quantity * product.price, // Calculate subtotal
+        },
+      ]);
+    }
+
+    // Show a success snackbar
     setSnackbar({
       open: true,
-      message: `已将 ${productName} 添加到购物车!`,
+      message: `已将 ${product.name} (${quantity} 件) 添加到购物车!`,
     });
   };
+
+  useEffect(() => {
+    console.log("SHOPPING CART", shoppingCart);
+  }, [shoppingCart]);
 
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") return;
@@ -102,76 +135,46 @@ const ShoppingPage = () => {
       <Grid container spacing={4} sx={{ maxWidth: "900px" }}>
         {products.map((product) => (
           <Grid item xs={12} sm={6} key={product.id}>
-            <Card
-              sx={{
-                bgcolor: "#fff",
-                borderRadius: 3,
-                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-                transition: "transform 0.2s",
-                "&:hover": {
-                  transform: "scale(1.03)",
-                },
-              }}
-            >
-              <CardMedia
-                component="img"
-                image={product.image}
-                alt={product.name}
-                sx={{
-                  height: "200px",
-                  objectFit: "contain",
-                  mt: 5,
-                  mb: 2,
-                  borderRadius: "12px",
-                }}
-              />
-              <CardContent sx={{ textAlign: "center" }}>
-                <Typography
-                  variant="h6"
-                  sx={{ fontWeight: "bold", color: "#333" }}
-                >
-                  {product.name}
-                </Typography>
-                <Typography variant="body2" sx={{ color: "#666", my: 1 }}>
-                  {product.description}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{ fontWeight: "bold", color: "#F48E02", my: 1 }}
-                >
-                  ¥{product.price.toFixed(2)}
-                </Typography>
-                <Button
-                  variant="contained"
-                  sx={{
-                    bgcolor: "#F48E02",
-                    color: "#fff",
-                    textTransform: "none",
-                    borderRadius: 20,
-                    px: 3,
-                    "&:hover": {
-                      bgcolor: "#d97801",
-                    },
-                  }}
-                  onClick={() => handleAddToCart(product.name)}
-                >
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      mr: 1,
-                    }}
-                  >
-                    <Icon icon="zondicons:add-solid" />
-                  </Box>
-                  <Typography>购买</Typography>
-                </Button>
-              </CardContent>
-            </Card>
+            <ProductCard product={product} onAddToCart={handleAddToCart} />
           </Grid>
         ))}
       </Grid>
+
+      <Box sx={{ mt: 6, width: "100%", maxWidth: "900px" }}>
+        <Typography variant="h5" sx={{ mb: 3, fontWeight: "bold" }}>
+          购物车
+        </Typography>
+        {shoppingCart.length > 0 ? (
+          <TableContainer component={Paper}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>产品名称</TableCell>
+                  <TableCell align="center">单价 (¥)</TableCell>
+                  <TableCell align="center">数量</TableCell>
+                  <TableCell align="center">小计 (¥)</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {shoppingCart.map((item) => (
+                  <TableRow key={item.id}>
+                    <TableCell>{item.name}</TableCell>
+                    <TableCell align="center">
+                      {item.price.toFixed(2)}
+                    </TableCell>
+                    <TableCell align="center">{item.quantity}</TableCell>
+                    <TableCell align="center">
+                      {item.subtotal.toFixed(2)}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        ) : (
+          <Typography variant="body1">购物车为空</Typography>
+        )}
+      </Box>
 
       <Snackbar
         open={snackbar.open}
