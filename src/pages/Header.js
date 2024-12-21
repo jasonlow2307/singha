@@ -1,8 +1,24 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Box,
+  MenuItem,
+  Select,
+} from "@mui/material";
 import { Icon } from "@iconify/react";
+import { useTranslation } from "react-i18next";
 
 const Header = ({ onNavigate }) => {
+  const { i18n, t } = useTranslation();
+
+  // Handle language change
+  const handleLanguageChange = (event) => {
+    i18n.changeLanguage(event.target.value);
+  };
+
   return (
     <AppBar
       position="static"
@@ -29,13 +45,13 @@ const Header = ({ onNavigate }) => {
           }}
         />
 
-        {/* Right Section: Buttons */}
+        {/* Right Section: Buttons and Language Toggle */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           {/* Buy Now Button */}
           <Button
             variant="contained"
             color="primary"
-            onClick={() => onNavigate("shopping")} // Navigate to ShoppingPage
+            onClick={() => onNavigate("shopping")}
             sx={{
               textTransform: "none",
               fontSize: "16px",
@@ -66,7 +82,7 @@ const Header = ({ onNavigate }) => {
               />
             </Box>
             <Typography sx={{ fontWeight: "bold", color: "#ffffff" }}>
-              立即购买
+              {t("header.buy_now")}
             </Typography>
           </Button>
 
@@ -105,9 +121,50 @@ const Header = ({ onNavigate }) => {
               />
             </Box>
             <Typography sx={{ fontWeight: "bold", color: "#ffffff" }}>
-              购物车
+              {t("header.shopping_cart")}
             </Typography>
           </Button>
+
+          {/* Language Toggle */}
+          <Select
+            value={i18n.language}
+            onChange={handleLanguageChange}
+            sx={{
+              fontSize: "16px",
+              fontWeight: "bold",
+              borderRadius: "20px",
+              padding: "5px 20px",
+              color: "#ffffff",
+              background: "linear-gradient(to right, #ff8a00, #ffc107)",
+              "&:hover": {
+                background: "linear-gradient(to right, #e67e00, #ffb300)",
+              },
+              ".MuiOutlinedInput-notchedOutline": { border: "none" },
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+              width: "145px",
+              height: "45px",
+            }}
+            MenuProps={{
+              PaperProps: {
+                sx: {
+                  backgroundColor: "#f8f9fa",
+                  boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.1)",
+                  borderRadius: "8px",
+                  "& .MuiMenuItem-root": {
+                    fontSize: "16px",
+                    fontWeight: "bold",
+                    padding: "8px 20px",
+                  },
+                  "& .MuiMenuItem-root:hover": {
+                    backgroundColor: "#ffeb99",
+                  },
+                },
+              },
+            }}
+          >
+            <MenuItem value="en">English</MenuItem>
+            <MenuItem value="cn">中文</MenuItem>
+          </Select>
         </Box>
       </Toolbar>
     </AppBar>

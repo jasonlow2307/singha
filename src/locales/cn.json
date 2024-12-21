@@ -1,0 +1,65 @@
+{
+  "header": {
+    "buy_now": "立即购买",
+    "shopping_cart": "购物车"
+  },
+  "hero_section": {
+    "subtitle": "海鲜品质保证，鲜味直送",
+    "title": "鲜家海鲜供应商 新鲜送货到你家",
+    "buy_button": "购买"
+  },
+  "products_section": {
+    "title": "热门海鲜产品",
+    "products": [
+      {
+        "name": "老虎虾",
+        "description": "优质老虎虾，肉质鲜嫩，适合烧烤或爆炒。",
+        "image": "./products/black_tiger_prawn.jpg"
+      },
+      {
+        "name": "鱿鱼圈",
+        "description": "精选鱿鱼圈，适合炸制或搭配沙拉。",
+        "image": "./products/white_prawn_4150.jpg"
+      },
+      {
+        "name": "明虾",
+        "description": "明虾含高蛋白，适合清蒸或红烧。",
+        "image": "./products/sotong_ring.jpg"
+      }
+    ]
+  },
+  "about_us_section": {
+    "title": "关于我们",
+    "content": [
+      "我们是您值得信赖的海鲜供应商，致力于提供新鲜、美味、品质保证的海鲜产品。",
+      "从渔船到您的餐桌，我们确保每一份海鲜都经过严格的质量把控，并通过冷链运输将海鲜新鲜送达您的家门口。",
+      "我们提供种类繁多的海鲜产品，包括鱼类、贝类、虾蟹类等，适合各种美食需求。",
+      "让我们为您的餐桌增添新鲜的美味，和您一起享受来自大海的馈赠！"
+    ]
+  },
+  "services_section": {
+    "title": "我们的服务",
+    "services": [
+      {
+        "title": "快速送货",
+        "description": "冷链运输，保证海鲜新鲜直达。",
+        "image": "./service_1.jpeg"
+      },
+      {
+        "title": "品质保障",
+        "description": "严格把控质量，提供最优海鲜。",
+        "image": "./service_2.jpeg"
+      },
+      {
+        "title": "多样选择",
+        "description": "鱼类、虾蟹类、贝类应有尽有。",
+        "image": "./service_3.jpeg"
+      }
+    ]
+  },
+  "contact_us_section": {
+    "title": "联系我们",
+    "description": "如果您有任何问题或需要咨询，请随时联系我们，我们将竭诚为您服务！",
+    "contact_button": "立即联系"
+  }
+}

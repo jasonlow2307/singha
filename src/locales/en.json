@@ -1,0 +1,65 @@
+{
+  "header": {
+    "buy_now": "Buy Now",
+    "shopping_cart": "Shopping Cart"
+  },
+  "hero_section": {
+    "subtitle": "Seafood Quality Guarantee, Freshness Delivered",
+    "title": "Your Trusted Seafood Supplier, Fresh Delivery to Your Doorstep",
+    "buy_button": "Buy Now"
+  },
+  "products_section": {
+    "title": "Popular Seafood Products",
+    "products": [
+      {
+        "name": "Black Tiger Prawn",
+        "description": "Premium black tiger prawn, tender and juicy, perfect for grilling or stir-frying.",
+        "image": "./products/black_tiger_prawn.jpg"
+      },
+      {
+        "name": "Squid Rings",
+        "description": "Selected squid rings, ideal for frying or pairing with salads.",
+        "image": "./products/white_prawn_4150.jpg"
+      },
+      {
+        "name": "White Prawn",
+        "description": "High-protein white prawn, suitable for steaming or braising.",
+        "image": "./products/sotong_ring.jpg"
+      }
+    ]
+  },
+  "about_us_section": {
+    "title": "About Us",
+    "content": [
+      "We are your trusted seafood supplier, dedicated to providing fresh, delicious, and quality-assured seafood products.",
+      "From fishing boats to your table, we ensure every piece of seafood undergoes strict quality control and is delivered fresh to your doorstep through cold chain logistics.",
+      "We offer a wide variety of seafood products, including fish, shellfish, and crustaceans, suitable for all your culinary needs.",
+      "Let us add fresh flavors to your table and enjoy the gifts from the sea together!"
+    ]
+  },
+  "services_section": {
+    "title": "Our Services",
+    "services": [
+      {
+        "title": "Fast Delivery",
+        "description": "Cold chain logistics to ensure fresh seafood delivery.",
+        "image": "./service_1.jpeg"
+      },
+      {
+        "title": "Quality Assurance",
+        "description": "Strict quality control, offering the finest seafood.",
+        "image": "./service_2.jpeg"
+      },
+      {
+        "title": "Variety of Choices",
+        "description": "A wide range of seafood including fish, shellfish, and crustaceans.",
+        "image": "./service_3.jpeg"
+      }
+    ]
+  },
+  "contact_us_section": {
+    "title": "Contact Us",
+    "description": "If you have any questions or inquiries, feel free to contact us. We are here to assist you!",
+    "contact_button": "Contact Now"
+  }
+}

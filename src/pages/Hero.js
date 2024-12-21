@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  AppBar,
-  Toolbar,
   Button,
   Typography,
   Box,
@@ -11,16 +9,19 @@ import {
   Link,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
+import { useTranslation } from "react-i18next";
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   return (
     <Box
       sx={{
-        overflowY: "scroll", // Enable vertical scrolling
-        scrollSnapType: "y mandatory", // Snap scrolling
-        scrollBehavior: "smooth", // Smooth scrolling
-        height: "100vh", // Full viewport height
-        "&::-webkit-scrollbar": { display: "none" }, // Hide scrollbar
+        overflowY: "scroll",
+        scrollSnapType: "y mandatory",
+        scrollBehavior: "smooth",
+        height: "100vh",
+        "&::-webkit-scrollbar": { display: "none" },
       }}
     >
       {/* Hero Section */}
@@ -38,7 +39,7 @@ const Hero = () => {
       >
         <Container sx={{ textAlign: "center" }}>
           <Typography variant="h6" color="textSecondary">
-            海鲜品质保证，鲜味直送
+            {t("hero_section.subtitle")}
           </Typography>
           <Typography
             variant="h3"
@@ -69,7 +70,7 @@ const Hero = () => {
                 }}
               />
               <Box component="span" sx={{ position: "relative", zIndex: 1 }}>
-                鲜家海鲜供应商 新鲜送货到你家
+                {t("hero_section.title")}
               </Box>
             </Box>
           </Typography>
@@ -85,15 +86,22 @@ const Hero = () => {
                 display: "flex",
                 alignItems: "center",
                 gap: 1.5,
-                width: "200px",
+                minWidth: "200px",
+                textTransform: "none",
                 "&:hover": {
                   background: "linear-gradient(to right, #FF5A3C, #FF9E33)",
                 },
               }}
             >
               <Icon icon="mdi:shopping" width="24" height="24" color="white" />
-              <Typography variant="button" fontSize={25} fontWeight={600}>
-                购买
+              <Typography
+                sx={{
+                  fontSize: 25,
+                  fontWeight: 600,
+                  textTransform: "none", // Prevent uppercase in Typography
+                }}
+              >
+                {t("hero_section.buy_button")}
               </Typography>
             </Button>
           </Box>
@@ -117,109 +125,95 @@ const Hero = () => {
             align="center"
             sx={{ mb: 6, color: "#FF7A59" }}
           >
-            热门海鲜产品
+            {t("products_section.title")}
           </Typography>
           <Grid container spacing={4}>
-            {[
-              {
-                name: "老虎虾",
-                image: "/products/black_tiger_prawn.jpg",
-                description: "优质老虎虾，肉质鲜嫩，适合烧烤或爆炒。",
-              },
-              {
-                name: "鱿鱼圈",
-                image: "/products/sotong_ring.jpg",
-                description: "精选鱿鱼圈，适合炸制或搭配沙拉。",
-              },
-              {
-                name: "明虾",
-                image: "/products/white_prawn_4150.jpg",
-                description: "明虾含高蛋白，适合清蒸或红烧。",
-              },
-            ].map((product, index) => (
-              <Grid item xs={12} sm={4} key={index}>
-                <Box
-                  sx={{
-                    perspective: "1000px",
-                  }}
-                >
+            {t("products_section.products", { returnObjects: true }).map(
+              (product, index) => (
+                <Grid item xs={12} sm={4} key={index}>
                   <Box
                     sx={{
-                      position: "relative",
-                      width: "100%",
-                      height: "275px",
-                      transformStyle: "preserve-3d",
-                      transition: "transform 0.6s",
-                      "&:hover": {
-                        transform: "rotateY(180deg)",
-                      },
+                      perspective: "1000px",
                     }}
                   >
-                    {/* Front of the card */}
-                    <Paper
-                      elevation={3}
+                    <Box
                       sx={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                        backfaceVisibility: "hidden",
-                        borderRadius: 2,
-                        overflow: "hidden",
-                        textAlign: "center",
-                      }}
-                    >
-                      <Box
-                        component="img"
-                        src={product.image}
-                        alt={product.name}
-                        sx={{
-                          width: "100%",
-                          height: 200,
-                          objectFit: "cover",
-                        }}
-                      />
-                      <Box sx={{ p: 2 }}>
-                        <Typography
-                          variant="h6"
-                          fontWeight="bold"
-                          fontSize={25}
-                        >
-                          {product.name}
-                        </Typography>
-                      </Box>
-                    </Paper>
-
-                    {/* Back of the card */}
-                    <Paper
-                      elevation={3}
-                      sx={{
-                        position: "absolute",
-                        top: 0,
-                        left: -15,
+                        position: "relative",
                         width: "100%",
                         height: "275px",
-                        backfaceVisibility: "hidden",
-                        transform: "rotateY(180deg)",
-                        borderRadius: 2,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        textAlign: "center",
-                        backgroundColor: "#FF7A59",
-                        color: "white",
-                        p: 2,
+                        transformStyle: "preserve-3d",
+                        transition: "transform 0.6s",
+                        "&:hover": {
+                          transform: "rotateY(180deg)",
+                        },
                       }}
                     >
-                      <Typography variant="body1" fontSize={25}>
-                        {product.description}
-                      </Typography>
-                    </Paper>
+                      {/* Front of the card */}
+                      <Paper
+                        elevation={3}
+                        sx={{
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          width: "100%",
+                          height: "100%",
+                          backfaceVisibility: "hidden",
+                          borderRadius: 2,
+                          overflow: "hidden",
+                          textAlign: "center",
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          src={product.image}
+                          alt={product.name}
+                          sx={{
+                            width: "100%",
+                            height: 200,
+                            objectFit: "cover",
+                          }}
+                        />
+                        <Box sx={{ p: 2 }}>
+                          <Typography
+                            variant="h6"
+                            fontWeight="bold"
+                            fontSize={25}
+                          >
+                            {product.name}
+                          </Typography>
+                        </Box>
+                      </Paper>
+
+                      {/* Back of the card */}
+                      <Paper
+                        elevation={3}
+                        sx={{
+                          position: "absolute",
+                          top: 0,
+                          left: -15,
+                          width: "100%",
+                          height: "275px",
+                          backfaceVisibility: "hidden",
+                          transform: "rotateY(180deg)",
+                          borderRadius: 2,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          textAlign: "center",
+                          backgroundColor: "#FF7A59",
+                          color: "white",
+                          p: 2,
+                        }}
+                      >
+                        <Typography variant="body1" fontSize={25}>
+                          {product.description}
+                        </Typography>
+                      </Paper>
+                    </Box>
                   </Box>
-                </Box>
-              </Grid>
-            ))}
+                </Grid>
+              )
+            )}
           </Grid>
         </Container>
       </Box>
@@ -242,7 +236,7 @@ const Hero = () => {
             align="center"
             sx={{ mb: 4, color: "#FF7A59" }}
           >
-            关于我们
+            {t("about_us_section.title")}
           </Typography>
           <Grid container spacing={4} alignItems="center">
             <Grid item xs={12} md={4.5}>
@@ -267,37 +261,18 @@ const Hero = () => {
                   lineHeight: 1.8,
                 }}
               >
-                <Typography
-                  variant="body1"
-                  color="textSecondary"
-                  sx={{ fontSize: "1.2rem" }}
-                  paragraph
-                >
-                  我们是您值得信赖的海鲜供应商，致力于提供新鲜、美味、品质保证的海鲜产品。
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="textSecondary"
-                  sx={{ fontSize: "1.2rem" }}
-                  paragraph
-                >
-                  从渔船到您的餐桌，我们确保每一份海鲜都经过严格的质量把控，并通过冷链运输将海鲜新鲜送达您的家门口。
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="textSecondary"
-                  sx={{ fontSize: "1.2rem" }}
-                  paragraph
-                >
-                  我们提供种类繁多的海鲜产品，包括鱼类、贝类、虾蟹类等，适合各种美食需求。
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{ fontSize: "1.2rem" }}
-                  color="textSecondary"
-                >
-                  让我们为您的餐桌增添新鲜的美味，和您一起享受来自大海的馈赠！
-                </Typography>
+                {t("about_us_section.content", { returnObjects: true }).map(
+                  (paragraph, index) => (
+                    <Typography
+                      key={index}
+                      variant="body1"
+                      color="textSecondary"
+                      sx={{ fontSize: "1.2rem", mb: 2 }}
+                    >
+                      {paragraph}
+                    </Typography>
+                  )
+                )}
               </Paper>
             </Grid>
           </Grid>
@@ -308,7 +283,7 @@ const Hero = () => {
       <Box
         sx={{
           backgroundColor: "#FFF7ED",
-          height: "calc(100vh - 140px)",
+          height: "100vh",
           scrollSnapAlign: "start",
           display: "flex",
           alignItems: "center",
@@ -322,130 +297,37 @@ const Hero = () => {
             align="center"
             sx={{ mb: 4, color: "#FF7A59" }}
           >
-            我们的服务
+            {t("services_section.title")}
           </Typography>
           <Grid container spacing={4}>
-            {[
-              {
-                title: "快速送货",
-                description: "冷链运输，保证海鲜新鲜直达。",
-                image: "/service_1.jpeg",
-              },
-              {
-                title: "品质保障",
-                description: "严格把控质量，提供最优海鲜。",
-                image: "/service_2.jpeg",
-              },
-              {
-                title: "多样选择",
-                description: "鱼类、虾蟹类、贝类应有尽有。",
-                image: "/service_3.jpeg",
-              },
-            ].map((service, index) => (
-              <Grid item xs={12} md={4} key={index}>
-                <Paper
-                  elevation={3}
-                  sx={{
-                    textAlign: "center",
-                    p: 3,
-                    borderRadius: 2,
-                    "&:hover": { boxShadow: 6 },
-                  }}
-                >
-                  <Typography variant="h5" fontWeight="bold" mb={2}>
-                    {service.title}
-                  </Typography>
-                  <img
-                    src={service.image}
-                    width={250}
-                    style={{ borderRadius: "25px" }}
-                    alt="Service"
-                  />
-                  <Typography variant="body1" color="textSecondary" mt={2}>
-                    {service.description}
-                  </Typography>
-                </Paper>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Contact Us Section */}
-      <Box
-        sx={{
-          height: "calc(100vh - 0px)",
-          scrollSnapAlign: "start",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "linear-gradient(to right, #FFEDD5, #FF7A59)",
-        }}
-      >
-        <Container maxWidth="lg">
-          <Grid container spacing={4} alignItems="center">
-            {/* Left Section */}
-            <Grid item xs={12} md={6}>
-              <Typography
-                variant="h3"
-                component="h3"
-                fontWeight="bold"
-                sx={{ mb: 3 }}
-              >
-                联系我们
-              </Typography>
-              <Typography variant="body1" sx={{ mb: 3 }} fontSize={20}>
-                如果您有任何问题或需要咨询，请随时联系我们，我们将竭诚为您服务！
-              </Typography>
-              <Link
-                href="https://wa.me/60193205676?text=Hello!%20I%20would%20like%20to%20inquire%20about%20Singha.
-"
-                target="_blank"
-                rel="noopener"
-              >
-                <Button
-                  variant="contained"
-                  sx={{
-                    backgroundColor: "#fff",
-                    color: "#FF7A59",
-                    px: 4,
-                    py: 1.5,
-                    gap: 1,
-                    borderRadius: 3,
-                    "&:hover": { backgroundColor: "#FFEDD5" },
-                  }}
-                >
-                  <Icon
-                    icon="fluent:call-16-filled"
-                    width="24"
-                    height="24"
-                    color="#FF7A59"
-                  />
-                  立即联系
-                </Button>
-              </Link>
-            </Grid>
-
-            {/* Right Section (Image) */}
-            <Grid
-              item
-              xs={12}
-              md={6}
-              sx={{
-                display: "flex",
-                justifyContent: "center", // Centers horizontally
-                alignItems: "center", // Optional: centers vertically if needed
-              }}
-            >
-              <Box
-                component="img"
-                src="/contact_us.png"
-                alt="Contact Us"
-                sx={{
-                  width: "450px",
-                }}
-              />
-            </Grid>
+            {t("services_section.services", { returnObjects: true }).map(
+              (service, index) => (
+                <Grid item xs={12} md={4} key={index}>
+                  <Paper
+                    elevation={3}
+                    sx={{
+                      textAlign: "center",
+                      p: 3,
+                      borderRadius: 2,
+                      "&:hover": { boxShadow: 6 },
+                    }}
+                  >
+                    <Typography variant="h5" fontWeight="bold" mb={2}>
+                      {service.title}
+                    </Typography>
+                    <img
+                      src={service.image}
+                      width={250}
+                      style={{ borderRadius: "25px" }}
+                      alt="Service"
+                    />
+                    <Typography variant="body1" color="textSecondary" mt={2}>
+                      {service.description}
+                    </Typography>
+                  </Paper>
+                </Grid>
+              )
+            )}
           </Grid>
         </Container>
       </Box>
