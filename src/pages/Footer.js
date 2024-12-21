@@ -32,8 +32,7 @@ const Footer = () => {
           />
         </Link>
         <Link
-          href="https://wa.me/60193205676?text=Hello!%20I%20would%20like%20to%20inquire%20about%20Singha.
-"
+          href="https://wa.me/60193205676?text=Hello!%20I%20would%20like%20to%20inquire%20about%20Singha."
           target="_blank"
           rel="noopener"
         >

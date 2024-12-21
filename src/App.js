@@ -7,6 +7,7 @@ import ShoppingCartPage from "./pages/ShoppingCart";
 import { SnackbarProvider } from "notistack";
 import { ShoppingCartProvider } from "./providers/ShoppingCartProvider";
 import "./providers/i18n";
+import WhatsAppIcon from "./components/WhatsappIcon";
 
 const App = () => {
   // State to toggle between Hero and ShoppingPage
@@ -34,6 +35,7 @@ const App = () => {
           </div>
         </ShoppingCartProvider>
       </SnackbarProvider>
+      <WhatsAppIcon />
       <Footer />
     </div>
   );
