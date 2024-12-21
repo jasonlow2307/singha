@@ -25,6 +25,7 @@ const Header = ({ onNavigate }) => {
             borderRadius: 2,
             boxShadow: 4,
             my: 2,
+            cursor: "pointer",
           }}
         />
 

@@ -78,24 +78,26 @@ const ShoppingCartPage = () => {
                   bgcolor: "#F48E02",
                 }}
               >
-                <TableCell sx={{ color: "#fff", fontWeight: "bold" }}>
+                <TableCell
+                  sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
+                >
                   产品名称
                 </TableCell>
                 <TableCell
                   align="center"
-                  sx={{ color: "#fff", fontWeight: "bold" }}
+                  sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
                 >
                   单价 (¥)
                 </TableCell>
                 <TableCell
                   align="center"
-                  sx={{ color: "#fff", fontWeight: "bold" }}
+                  sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
                 >
                   数量
                 </TableCell>
                 <TableCell
                   align="center"
-                  sx={{ color: "#fff", fontWeight: "bold" }}
+                  sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
                 >
                   小计 (¥)
                 </TableCell>
@@ -111,10 +113,14 @@ const ShoppingCartPage = () => {
                     },
                   }}
                 >
-                  <TableCell>{item.name}</TableCell>
-                  <TableCell align="center">{item.price.toFixed(2)}</TableCell>
-                  <TableCell align="center">{item.quantity}</TableCell>
-                  <TableCell align="center">
+                  <TableCell sx={{ fontSize: "1.1rem" }}>{item.name}</TableCell>
+                  <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
+                    {item.price.toFixed(2)}
+                  </TableCell>
+                  <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
+                    {item.quantity}
+                  </TableCell>
+                  <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
                     {item.subtotal.toFixed(2)}
                   </TableCell>
                 </TableRow>
@@ -130,6 +136,7 @@ const ShoppingCartPage = () => {
             mt: 4,
             fontWeight: "bold",
             textShadow: "1px 1px 5px rgba(0, 0, 0, 0.3)",
+            fontSize: "1.5rem", // Increased font size
           }}
         >
           购物车为空
@@ -142,7 +149,7 @@ const ShoppingCartPage = () => {
           sx={{
             mt: 4,
             width: "100%",
-            maxWidth: "900px",
+            maxWidth: "400px",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",

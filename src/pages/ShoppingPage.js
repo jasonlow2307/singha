@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { Icon } from "@iconify/react";
 import CloseIcon from "@mui/icons-material/Close";
-import ProductCard from "./ProductCard";
+import ProductCard from "../components/ProductCard";
 import { useShoppingCart } from "../providers/ShoppingCartProvider";
 
 const ShoppingPage = () => {

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Footer from "./components/Footer";
-import ShoppingPage from "./components/ShoppingPage";
-import ShoppingCartPage from "./components/ShoppingCart";
+import Header from "./pages/Header";
+import Hero from "./pages/Hero";
+import Footer from "./pages/Footer";
+import ShoppingPage from "./pages/ShoppingPage";
+import ShoppingCartPage from "./pages/ShoppingCart";
 import { SnackbarProvider } from "notistack";
 import { ShoppingCartProvider } from "./providers/ShoppingCartProvider";
 
