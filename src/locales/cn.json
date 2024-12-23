@@ -19,12 +19,12 @@
       {
         "name": "鱿鱼圈",
         "description": "精选鱿鱼圈，适合炸制或搭配沙拉。",
-        "image": "./products/white_prawn_4150.jpg"
+        "image": "./products/sotong_ring.jpg"
       },
       {
-        "name": "明虾",
-        "description": "明虾含高蛋白，适合清蒸或红烧。",
-        "image": "./products/sotong_ring.jpg"
+        "name": "白虾",
+        "description": "白虾含高蛋白，适合清蒸或红烧。",
+        "image": "./products/white_prawn_4150.jpg"
       }
     ]
   },

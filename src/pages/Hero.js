@@ -11,7 +11,7 @@ import {
 import { Icon } from "@iconify/react";
 import { useTranslation } from "react-i18next";
 
-const Hero = () => {
+const Hero = ({ onNavigate }) => {
   const { t } = useTranslation();
 
   return (
@@ -92,6 +92,7 @@ const Hero = () => {
                   background: "linear-gradient(to right, #FF5A3C, #FF9E33)",
                 },
               }}
+              onClick={() => onNavigate("shopping")}
             >
               <Icon icon="mdi:shopping" width="24" height="24" color="white" />
               <Typography

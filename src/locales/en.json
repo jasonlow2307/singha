@@ -19,12 +19,12 @@
       {
         "name": "Squid Rings",
         "description": "Selected squid rings, ideal for frying or pairing with salads.",
-        "image": "./products/white_prawn_4150.jpg"
+        "image": "./products/sotong_ring.jpg"
       },
       {
         "name": "White Prawn",
         "description": "High-protein white prawn, suitable for steaming or braising.",
-        "image": "./products/sotong_ring.jpg"
+        "image": "./products/white_prawn_4150.jpg"
       }
     ]
   },

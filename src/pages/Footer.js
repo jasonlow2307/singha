@@ -22,7 +22,11 @@ const Footer = () => {
           mb: 2,
         }}
       >
-        <Link href="https://www.instagram.com" target="_blank" rel="noopener">
+        <Link
+          href="https://www.instagram.com/singhafrozen/"
+          target="_blank"
+          rel="noopener"
+        >
           <Icon
             icon="mdi:instagram"
             width="32"

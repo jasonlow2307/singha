@@ -29,7 +29,7 @@ const App = () => {
         <ShoppingCartProvider>
           <Header onNavigate={handleNavigate} />
           <div style={{ flex: 1, overflow: "auto" }}>
-            {currentPage === "home" && <Hero />}
+            {currentPage === "home" && <Hero onNavigate={handleNavigate} />}
             {currentPage === "shopping" && <ShoppingPage />}
             {currentPage === "shoppingCart" && <ShoppingCartPage />}
           </div>
