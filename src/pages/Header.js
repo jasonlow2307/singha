@@ -37,7 +37,9 @@ const Header = ({ onNavigate }) => {
           onClick={() => onNavigate("home")}
           alt="Logo"
           sx={{
-            width: 120,
+            width: { xs: 70, sm: 120 },
+            display: "block",
+            mx: { xs: "auto", sm: "0" },
             borderRadius: 2,
             boxShadow: 4,
             my: 2,
@@ -46,7 +48,14 @@ const Header = ({ onNavigate }) => {
         />
 
         {/* Right Section: Buttons and Language Toggle */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+            display: { xs: "none", sm: "flex" },
+          }}
+        >
           {/* Buy Now Button */}
           <Button
             variant="contained"

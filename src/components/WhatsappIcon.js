@@ -20,22 +20,23 @@ const WhatsAppIcon = () => {
     <Box
       sx={{
         position: "fixed",
-        bottom: 16, // Distance from the bottom of the screen
-        right: 16, // Distance from the right of the screen
+        bottom: 24, // Increased for better spacing
+        right: 24, // Increased for better spacing
         zIndex: 1000, // Ensure it appears above other elements
         backgroundColor: "#25D366", // WhatsApp green
         borderRadius: "50%",
         width: 60,
         height: 60,
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+        alignItems: "center", // Ensures icon is centered vertically
+        justifyContent: "center", // Ensures icon is centered horizontally
+        boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",
         cursor: "pointer",
         animation: `${bounceAnimation} 2s infinite`, // Apply the bounce animation
         "&:hover": {
           backgroundColor: "#1EBE57", // Slightly darker on hover
         },
+        display: { xs: "none", sm: "flex" }, // Show only on larger devices
       }}
       onClick={() => {
         window.open(
@@ -44,7 +45,15 @@ const WhatsAppIcon = () => {
         );
       }}
     >
-      <Icon icon="ic:baseline-whatsapp" width="32" height="32" color="white" />
+      <Icon
+        icon="ic:baseline-whatsapp"
+        width="32"
+        height="32"
+        color="white"
+        style={{
+          margin: "0 auto", // Ensures the icon is perfectly centered
+        }}
+      />
     </Box>
   );
 };
