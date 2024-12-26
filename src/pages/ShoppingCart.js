@@ -86,25 +86,41 @@ const ShoppingCartPage = () => {
                 }}
               >
                 <TableCell
-                  sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
+                  sx={{
+                    color: "#fff",
+                    fontWeight: "bold",
+                    fontSize: { xs: "0.9rem", md: "1.2rem" }, // Responsive font size
+                  }}
                 >
                   {t("shopping_cart_page.product_name_label")}
                 </TableCell>
                 <TableCell
                   align="center"
-                  sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
+                  sx={{
+                    color: "#fff",
+                    fontWeight: "bold",
+                    fontSize: { xs: "0.9rem", md: "1.2rem" }, // Responsive font size
+                  }}
                 >
                   {t("shopping_cart_page.price_label")} (RM)
                 </TableCell>
                 <TableCell
                   align="center"
-                  sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
+                  sx={{
+                    color: "#fff",
+                    fontWeight: "bold",
+                    fontSize: { xs: "0.9rem", md: "1.2rem" }, // Responsive font size
+                  }}
                 >
                   {t("shopping_cart_page.quantity_label")}
                 </TableCell>
                 <TableCell
                   align="center"
-                  sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
+                  sx={{
+                    color: "#fff",
+                    fontWeight: "bold",
+                    fontSize: { xs: "0.9rem", md: "1.2rem" }, // Responsive font size
+                  }}
                 >
                   {t("shopping_cart_page.subtotal_label")} (RM)
                 </TableCell>
@@ -124,16 +140,35 @@ const ShoppingCartPage = () => {
                       },
                     }}
                   >
-                    <TableCell sx={{ fontSize: "1.1rem" }}>
+                    <TableCell
+                      sx={{
+                        fontSize: { xs: "0.8rem", md: "1.1rem" }, // Responsive font size
+                      }}
+                    >
                       {item.name}
                     </TableCell>
-                    <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        fontSize: { xs: "0.8rem", md: "1.1rem" }, // Responsive font size
+                      }}
+                    >
                       RM {price.toFixed(2)}
                     </TableCell>
-                    <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        fontSize: { xs: "0.8rem", md: "1.1rem" }, // Responsive font size
+                      }}
+                    >
                       {item.quantity}
                     </TableCell>
-                    <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
+                    <TableCell
+                      align="center"
+                      sx={{
+                        fontSize: { xs: "0.8rem", md: "1.1rem" }, // Responsive font size
+                      }}
+                    >
                       RM {subtotal.toFixed(2)}
                     </TableCell>
                   </TableRow>
@@ -219,7 +254,7 @@ const ShoppingCartPage = () => {
         <Alert
           onClose={handleCloseSnackbar}
           severity="success"
-          sx={{ width: "100%" }}
+          sx={{ width: { xs: "50%", sm: "100%" } }}
         >
           {snackbar.message}
         </Alert>
