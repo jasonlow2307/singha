@@ -27,8 +27,8 @@ const ShoppingCartPage = () => {
   // Calculate total cost
   const calculateTotal = () =>
     shoppingCart.reduce((total, item) => {
-      console.log(item);
-      const price = item.quantity >= 2 ? item.price.bundle : item.price.single;
+      const price =
+        item.quantity >= 2 ? item.prices.bundle : item.prices.single; // Determine price dynamically
       return total + price * item.quantity;
     }, 0);
 
@@ -113,7 +113,7 @@ const ShoppingCartPage = () => {
             <TableBody>
               {shoppingCart.map((item) => {
                 const price =
-                  item.quantity >= 2 ? item.bundlePrice : item.singlePrice; // Determine price
+                  item.quantity >= 2 ? item.prices.bundle : item.prices.single; // Determine price dynamically
                 const subtotal = price * item.quantity; // Calculate subtotal
                 return (
                   <TableRow
@@ -150,7 +150,7 @@ const ShoppingCartPage = () => {
             mt: 4,
             fontWeight: "bold",
             textShadow: "1px 1px 5px rgba(0, 0, 0, 0.3)",
-            fontSize: "1.5rem", // Increased font size
+            fontSize: "1.5rem",
           }}
         >
           {t("shopping_cart_page.empty_message")}

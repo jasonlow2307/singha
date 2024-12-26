@@ -23,40 +23,38 @@ const ShoppingPage = () => {
     {
       id: 1,
       name: t("products_section.products.0.name"),
-      price: { single: 33, bundle: 31 },
+      prices: { single: 33, bundle: 31 },
       image: "/products/black_tiger_prawn.jpg",
       description: t("products_section.products.0.detailed_description"),
     },
     {
       id: 2,
       name: t("products_section.products.1.name"),
-      price: { single: 16, bundle: 14 },
+      prices: { single: 16, bundle: 14 },
       image: "/products/sotong_ring.jpg",
       description: t("products_section.products.1.detailed_description"),
     },
     {
       id: 3,
       name: t("products_section.products.2.name"),
-      price: { single: 30, bundle: 28 },
+      prices: { single: 30, bundle: 28 },
       image: "/products/white_prawn_3640.jpg",
       description: t("products_section.products.2.detailed_description.small"),
     },
     {
       id: 4,
       name: t("products_section.products.2.name"),
-      price: { single: 29, bundle: 27 },
+      prices: { single: 29, bundle: 27 },
       image: "/products/white_prawn_4150.jpg",
       description: t("products_section.products.2.detailed_description.big"),
     },
   ];
 
   const handleAddToCart = (product, quantity) => {
-    // Determine price based on quantity
-    const pricePerUnit =
-      quantity >= 2 ? product.price.bundle : product.price.single;
-
-    // Add to cart with calculated price
-    addToCart({ ...product, price: pricePerUnit }, quantity);
+    addToCart(
+      { ...product, prices: product.prices },
+      quantity // Pass prices to the shopping cart
+    );
 
     // Display snackbar
     setSnackbar({

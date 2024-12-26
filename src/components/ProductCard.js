@@ -86,7 +86,7 @@ const ProductCard = ({ product, onAddToCart }) => {
             }}
           >
             {t("product_card.single_price_label")}: RM{" "}
-            {product.price.single.toFixed(2)}
+            {product.prices.single.toFixed(2)}
           </Typography>
           <Typography
             variant="body1"
@@ -97,7 +97,7 @@ const ProductCard = ({ product, onAddToCart }) => {
             }}
           >
             {t("product_card.bundle_price_label")}: RM{" "}
-            {product.price.bundle.toFixed(2)}
+            {product.prices.bundle.toFixed(2)}
           </Typography>
         </Box>
 
