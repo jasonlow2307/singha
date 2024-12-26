@@ -50,7 +50,6 @@ const Header = ({ onNavigate }) => {
         {/* Right Section: Buttons and Language Toggle */}
         <Box
           sx={{
-            display: "flex",
             alignItems: "center",
             gap: 2,
             display: { xs: "none", sm: "flex" },

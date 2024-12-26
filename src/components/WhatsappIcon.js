@@ -27,7 +27,6 @@ const WhatsAppIcon = () => {
         borderRadius: "50%",
         width: 60,
         height: 60,
-        display: "flex",
         alignItems: "center", // Ensures icon is centered vertically
         justifyContent: "center", // Ensures icon is centered horizontally
         boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.2)",

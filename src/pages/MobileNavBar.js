@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { useTranslation } from "react-i18next";
 
 const MobileNavBar = ({ onNavigate }) => {
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
   return (
     <AppBar
       position="fixed"
