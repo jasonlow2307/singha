@@ -44,6 +44,17 @@
     "title": "Seafood Products",
     "added_to_cart_message": "{{productName}} ({{quantity}} items) added to the shopping cart!"
   },
+  "shopping_cart_page": {
+    "title": "Shopping Cart",
+    "empty_message": "Your shopping cart is empty",
+    "checkout_button": "Proceed to Checkout",
+    "subtotal_label": "Subtotal",
+    "total_label": "Total",
+    "price_label": "Price",
+    "quantity_label": "Quantity",
+    "product_name_label": "Product Name",
+    "checkout_snackbar_message": "Processing checkout..."
+  },
   "about_us_section": {
     "title": "About Us",
     "content": [

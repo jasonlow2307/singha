@@ -13,22 +13,29 @@ import {
   Snackbar,
   Alert,
 } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { useShoppingCart } from "../providers/ShoppingCartProvider";
 
 const ShoppingCartPage = () => {
   const { shoppingCart } = useShoppingCart();
+  const { t } = useTranslation();
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
   });
 
+  // Calculate total cost
   const calculateTotal = () =>
-    shoppingCart.reduce((total, item) => total + item.subtotal, 0);
+    shoppingCart.reduce((total, item) => {
+      console.log(item);
+      const price = item.quantity >= 2 ? item.price.bundle : item.price.single;
+      return total + price * item.quantity;
+    }, 0);
 
   const handleCheckout = () => {
     setSnackbar({
       open: true,
-      message: "正在结账...",
+      message: t("shopping_cart_page.checkout_snackbar_message"),
     });
   };
 
@@ -58,7 +65,7 @@ const ShoppingCartPage = () => {
           textShadow: "1px 1px 5px rgba(0, 0, 0, 0.3)",
         }}
       >
-        购物车
+        {t("shopping_cart_page.title")}
       </Typography>
 
       {/* Shopping Cart Table */}
@@ -81,50 +88,57 @@ const ShoppingCartPage = () => {
                 <TableCell
                   sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
                 >
-                  产品名称
+                  {t("shopping_cart_page.product_name_label")}
                 </TableCell>
                 <TableCell
                   align="center"
                   sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
                 >
-                  单价 (¥)
+                  {t("shopping_cart_page.price_label")} (RM)
                 </TableCell>
                 <TableCell
                   align="center"
                   sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
                 >
-                  数量
+                  {t("shopping_cart_page.quantity_label")}
                 </TableCell>
                 <TableCell
                   align="center"
                   sx={{ color: "#fff", fontWeight: "bold", fontSize: "1.2rem" }}
                 >
-                  小计 (¥)
+                  {t("shopping_cart_page.subtotal_label")} (RM)
                 </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {shoppingCart.map((item) => (
-                <TableRow
-                  key={item.id}
-                  sx={{
-                    "&:hover": {
-                      bgcolor: "#FFF5E0",
-                    },
-                  }}
-                >
-                  <TableCell sx={{ fontSize: "1.1rem" }}>{item.name}</TableCell>
-                  <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
-                    {item.price.toFixed(2)}
-                  </TableCell>
-                  <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
-                    {item.quantity}
-                  </TableCell>
-                  <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
-                    {item.subtotal.toFixed(2)}
-                  </TableCell>
-                </TableRow>
-              ))}
+              {shoppingCart.map((item) => {
+                const price =
+                  item.quantity >= 2 ? item.bundlePrice : item.singlePrice; // Determine price
+                const subtotal = price * item.quantity; // Calculate subtotal
+                return (
+                  <TableRow
+                    key={item.id}
+                    sx={{
+                      "&:hover": {
+                        bgcolor: "#FFF5E0",
+                      },
+                    }}
+                  >
+                    <TableCell sx={{ fontSize: "1.1rem" }}>
+                      {item.name}
+                    </TableCell>
+                    <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
+                      RM {price.toFixed(2)}
+                    </TableCell>
+                    <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
+                      {item.quantity}
+                    </TableCell>
+                    <TableCell align="center" sx={{ fontSize: "1.1rem" }}>
+                      RM {subtotal.toFixed(2)}
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
             </TableBody>
           </Table>
         </TableContainer>
@@ -139,7 +153,7 @@ const ShoppingCartPage = () => {
             fontSize: "1.5rem", // Increased font size
           }}
         >
-          购物车为空
+          {t("shopping_cart_page.empty_message")}
         </Typography>
       )}
 
@@ -160,14 +174,14 @@ const ShoppingCartPage = () => {
           }}
         >
           <Typography variant="h6" fontWeight="bold">
-            总计:
+            {t("shopping_cart_page.total_label")}
           </Typography>
           <Typography
             variant="h6"
             fontWeight="bold"
             sx={{ color: "#F48E02", fontSize: "1.5rem" }}
           >
-            ¥{calculateTotal().toFixed(2)}
+            RM {calculateTotal().toFixed(2)}
           </Typography>
         </Box>
       )}
@@ -191,7 +205,7 @@ const ShoppingCartPage = () => {
           }}
           onClick={handleCheckout}
         >
-          去结账
+          {t("shopping_cart_page.checkout_button")}
         </Button>
       )}
 

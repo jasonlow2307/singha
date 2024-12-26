@@ -44,6 +44,17 @@
     "title": "海鲜产品",
     "added_to_cart_message": "已将 {{productName}} ({{quantity}} 件) 添加到购物车!"
   },
+  "shopping_cart_page": {
+    "title": "购物车",
+    "empty_message": "购物车为空",
+    "checkout_button": "去结账",
+    "subtotal_label": "小计",
+    "total_label": "总计",
+    "price_label": "单价",
+    "quantity_label": "数量",
+    "product_name_label": "产品名称",
+    "checkout_snackbar_message": "正在结账..."
+  },
   "about_us_section": {
     "title": "关于我们",
     "content": [
