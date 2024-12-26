@@ -12,10 +12,11 @@ import {
   InputLabel,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
+import { useTranslation } from "react-i18next";
 
-// ProductCard Component
 const ProductCard = ({ product, onAddToCart }) => {
   const [quantity, setQuantity] = useState(1); // Manage quantity locally
+  const { t } = useTranslation(); // Translation hook
 
   const handleAddToCart = () => {
     onAddToCart(product, quantity);
@@ -33,6 +34,7 @@ const ProductCard = ({ product, onAddToCart }) => {
         },
       }}
     >
+      {/* Product Image */}
       <CardMedia
         component="img"
         image={product.image}
@@ -45,6 +47,8 @@ const ProductCard = ({ product, onAddToCart }) => {
           borderRadius: "12px",
         }}
       />
+
+      {/* Product Content */}
       <CardContent
         sx={{
           textAlign: "center",
@@ -53,26 +57,61 @@ const ProductCard = ({ product, onAddToCart }) => {
           gap: 2,
         }}
       >
+        {/* Product Name */}
         <Typography variant="h6" sx={{ fontWeight: "bold", color: "#333" }}>
           {product.name}
         </Typography>
+
+        {/* Product Description */}
         <Typography variant="body2" sx={{ color: "#666", my: 1 }}>
           {product.description}
         </Typography>
-        <Typography
-          variant="body1"
-          sx={{ fontWeight: "bold", color: "#F48E02", my: 1 }}
+
+        {/* Pricing */}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 1,
+            my: 2,
+          }}
         >
-          ¥{product.price.toFixed(2)}
-        </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              fontWeight: "bold",
+              color: "#F48E02",
+              fontSize: "18px",
+            }}
+          >
+            {t("product_card.single_price_label")}: RM{" "}
+            {product.price.single.toFixed(2)}
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              fontWeight: "bold",
+              color: "green",
+              fontSize: "18px",
+            }}
+          >
+            {t("product_card.bundle_price_label")}: RM{" "}
+            {product.price.bundle.toFixed(2)}
+          </Typography>
+        </Box>
+
+        {/* Quantity Selector */}
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <FormControl>
-            <InputLabel id={`quantity-label-${product.id}`}>数量</InputLabel>
+            <InputLabel id={`quantity-label-${product.id}`}>
+              {t("product_card.quantity_label")}
+            </InputLabel>
             <Select
               labelId={`quantity-label-${product.id}`}
               id={`quantity-select-${product.id}`}
               value={quantity}
-              label="数量"
+              label={t("product_card.quantity_label")}
               onChange={(e) => setQuantity(Number(e.target.value))}
               sx={{
                 minWidth: "150px",
@@ -100,6 +139,8 @@ const ProductCard = ({ product, onAddToCart }) => {
             </Select>
           </FormControl>
         </Box>
+
+        {/* Add to Cart Button */}
         <Box sx={{ display: "flex", justifyContent: "center" }}>
           <Button
             variant="contained"
@@ -127,7 +168,7 @@ const ProductCard = ({ product, onAddToCart }) => {
             >
               <Icon icon="zondicons:add-solid" />
             </Box>
-            <Typography>购买</Typography>
+            <Typography>{t("product_card.add_to_cart_button")}</Typography>
           </Button>
         </Box>
       </CardContent>

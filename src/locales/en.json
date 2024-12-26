@@ -14,19 +14,35 @@
       {
         "name": "Black Tiger Prawn",
         "description": "Premium black tiger prawn, tender and juicy, perfect for grilling or stir-frying.",
+        "detailed_description": "Full-bodied and suitable for grilling or steaming (31-35 pieces per pound)",
         "image": "./products/black_tiger_prawn.jpg"
       },
       {
         "name": "Squid Rings",
         "description": "Selected squid rings, ideal for frying or pairing with salads.",
+        "detailed_description": "Tender texture, perfect for frying or stir-frying",
         "image": "./products/sotong_ring.jpg"
       },
       {
         "name": "White Prawn",
         "description": "High-protein white prawn, suitable for steaming or braising.",
+        "detailed_description": {
+          "small": "Sweet and fresh, ideal for soups or frying (36-40 pieces per pound)",
+          "big": "Sweet and fresh, ideal for soups or frying (41-50 pieces per pound)"
+        },
         "image": "./products/white_prawn_4150.jpg"
       }
     ]
+  },
+  "product_card": {
+    "single_price_label": "Single Price",
+    "bundle_price_label": "Bundle Price",
+    "quantity_label": "Quantity",
+    "add_to_cart_button": "Buy"
+  },
+  "shopping_page": {
+    "title": "Seafood Products",
+    "added_to_cart_message": "{{productName}} ({{quantity}} items) added to the shopping cart!"
   },
   "about_us_section": {
     "title": "About Us",

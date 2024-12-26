@@ -11,47 +11,60 @@ import { Icon } from "@iconify/react";
 import CloseIcon from "@mui/icons-material/Close";
 import ProductCard from "../components/ProductCard";
 import { useShoppingCart } from "../providers/ShoppingCartProvider";
+import { useTranslation } from "react-i18next";
 
 const ShoppingPage = () => {
   const { shoppingCart, addToCart } = useShoppingCart();
+  const { t } = useTranslation();
+
   const [snackbar, setSnackbar] = useState({ open: false, message: "" });
 
   const products = [
     {
       id: 1,
-      name: "老虎虾",
-      price: 120.0,
+      name: t("products_section.products.0.name"),
+      price: { single: 33, bundle: 31 },
       image: "/products/black_tiger_prawn.jpg",
-      description: "肉质饱满，适合烧烤或清蒸 (31-35只每磅)",
+      description: t("products_section.products.0.detailed_description"),
     },
     {
       id: 2,
-      name: "明虾",
-      price: 80.0,
-      image: "/products/white_prawn_3640.jpg",
-      description: "鲜甜可口，适合煮汤或油炸 (36-40只每磅)",
+      name: t("products_section.products.1.name"),
+      price: { single: 16, bundle: 14 },
+      image: "/products/sotong_ring.jpg",
+      description: t("products_section.products.1.detailed_description"),
     },
     {
       id: 3,
-      name: "明虾",
-      price: 200.0,
-      image: "/products/white_prawn_4150.jpg",
-      description: "适合做虾仁，味道鲜美 (41-50只每磅)",
+      name: t("products_section.products.2.name"),
+      price: { single: 30, bundle: 28 },
+      image: "/products/white_prawn_3640.jpg",
+      description: t("products_section.products.2.detailed_description.small"),
     },
     {
       id: 4,
-      name: "鱿鱼圈",
-      price: 150.0,
-      image: "/products/sotong_ring.jpg",
-      description: "口感嫩滑，适合煎炸或炒制",
+      name: t("products_section.products.2.name"),
+      price: { single: 29, bundle: 27 },
+      image: "/products/white_prawn_4150.jpg",
+      description: t("products_section.products.2.detailed_description.big"),
     },
   ];
 
   const handleAddToCart = (product, quantity) => {
-    addToCart(product, quantity);
+    // Determine price based on quantity
+    const pricePerUnit =
+      quantity >= 2 ? product.price.bundle : product.price.single;
+
+    // Add to cart with calculated price
+    addToCart({ ...product, price: pricePerUnit }, quantity);
+
+    // Display snackbar
     setSnackbar({
       open: true,
-      message: `已将 ${product.name} (${quantity} 件) 添加到购物车!`,
+      message: t("shopping_page.added_to_cart_message", {
+        productName: product.name,
+        quantity,
+      }),
     });
   };
 
@@ -92,7 +105,7 @@ const ShoppingPage = () => {
             color: "white",
           }}
         >
-          海鲜产品
+          {t("shopping_page.title")}
         </Typography>
       </Box>
 

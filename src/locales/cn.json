@@ -14,19 +14,35 @@
       {
         "name": "老虎虾",
         "description": "优质老虎虾，肉质鲜嫩，适合烧烤或爆炒。",
+        "detailed_description": "肉质饱满，适合烧烤或清蒸 (31-35只每磅)",
         "image": "./products/black_tiger_prawn.jpg"
       },
       {
         "name": "鱿鱼圈",
         "description": "精选鱿鱼圈，适合炸制或搭配沙拉。",
+        "detailed_description": "口感嫩滑，适合煎炸或炒制",
         "image": "./products/sotong_ring.jpg"
       },
       {
         "name": "白虾",
         "description": "白虾含高蛋白，适合清蒸或红烧。",
+        "detailed_description": {
+          "small": "鲜甜可口，适合煮汤或油炸 (36-40只每磅)",
+          "big": "鲜甜可口，适合煮汤或油炸 (41-50只每磅)"
+        },
         "image": "./products/white_prawn_4150.jpg"
       }
     ]
+  },
+  "product_card": {
+    "single_price_label": "单价",
+    "bundle_price_label": "套餐价",
+    "quantity_label": "数量",
+    "add_to_cart_button": "购买"
+  },
+  "shopping_page": {
+    "title": "海鲜产品",
+    "added_to_cart_message": "已将 {{productName}} ({{quantity}} 件) 添加到购物车!"
   },
   "about_us_section": {
     "title": "关于我们",
