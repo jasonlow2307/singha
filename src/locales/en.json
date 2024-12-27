@@ -43,6 +43,7 @@
   },
   "shopping_page": {
     "title": "Seafood Products",
+    "bundle_price_note": "Bundle price applies to 2 packs or more.",
     "added_to_cart_message": "{{productName}} ({{quantity}} items) added to the shopping cart!"
   },
   "shopping_cart_page": {

@@ -92,7 +92,7 @@ const ShoppingPage = () => {
           display: "flex",
           alignItems: "center",
           gap: 1,
-          mb: 4,
+          mb: 2,
         }}
       >
         <Icon
@@ -109,6 +109,19 @@ const ShoppingPage = () => {
           {t("shopping_page.title")}
         </Typography>
       </Box>
+
+      {/* Add the note about bundle pricing */}
+      <Typography
+        variant="body2"
+        sx={{
+          color: "white",
+          fontWeight: "medium",
+          mb: 4,
+          textAlign: "center",
+        }}
+      >
+        {t("shopping_page.bundle_price_note")}
+      </Typography>
 
       <Grid container spacing={4} sx={{ maxWidth: "900px" }}>
         {products.map((product) => (

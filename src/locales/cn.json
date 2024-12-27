@@ -37,12 +37,13 @@
   },
   "product_card": {
     "single_price_label": "单价",
-    "bundle_price_label": "套餐价",
+    "bundle_price_label": "优惠价",
     "quantity_label": "数量",
     "add_to_cart_button": "购买"
   },
   "shopping_page": {
     "title": "海鲜产品",
+    "bundle_price_note": "优惠价格适用于2包或以上。",
     "added_to_cart_message": "已将 {{productName}} ({{quantity}} 件) 添加到购物车!"
   },
   "shopping_cart_page": {
