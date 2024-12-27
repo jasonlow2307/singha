@@ -137,11 +137,59 @@ const Header = ({ onNavigate }) => {
           <Select
             value={i18n.language}
             onChange={handleLanguageChange}
+            renderValue={(selected) => {
+              if (selected === "en") {
+                return (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 2,
+                    }}
+                  >
+                    <Icon
+                      icon="proicons:globe"
+                      style={{
+                        fontSize: "20px",
+                        color: "#ffffff",
+                        fontWeight: "bold",
+                      }}
+                    />
+                    <Typography sx={{ fontWeight: "bold", color: "#ffffff" }}>
+                      English
+                    </Typography>
+                  </Box>
+                );
+              }
+              if (selected === "cn") {
+                return (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 2,
+                    }}
+                  >
+                    <Icon
+                      icon="proicons:globe"
+                      style={{
+                        fontSize: "25px",
+                        color: "#ffffff",
+                        fontWeight: "bold",
+                      }}
+                    />
+                    <Typography sx={{ fontWeight: "bold", color: "#ffffff" }}>
+                      中文
+                    </Typography>
+                  </Box>
+                );
+              }
+            }}
             sx={{
               fontSize: "16px",
               fontWeight: "bold",
               borderRadius: "20px",
-              padding: "5px 20px",
+              padding: "5px 10px",
               color: "#ffffff",
               background: "linear-gradient(to right, #ff8a00, #ffc107)",
               "&:hover": {
@@ -149,7 +197,7 @@ const Header = ({ onNavigate }) => {
               },
               ".MuiOutlinedInput-notchedOutline": { border: "none" },
               boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-              width: "145px",
+              width: "160px",
               height: "45px",
             }}
             MenuProps={{
@@ -170,8 +218,28 @@ const Header = ({ onNavigate }) => {
               },
             }}
           >
-            <MenuItem value="en">English</MenuItem>
-            <MenuItem value="cn">中文</MenuItem>
+            <MenuItem
+              value="en"
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 0.5,
+              }}
+            >
+              <Typography>English</Typography>
+            </MenuItem>
+            <MenuItem
+              value="cn"
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: 0.5,
+              }}
+            >
+              <Typography>中文</Typography>
+            </MenuItem>
           </Select>
         </Box>
       </Toolbar>
