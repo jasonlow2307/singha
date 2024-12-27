@@ -35,7 +35,7 @@ const Hero = ({ onNavigate }) => {
         {/* =================== HERO SECTION =================== */}
         <Box
           sx={{
-            background: "url('/hero_banner.png')",
+            backgroundImage: "url('/singha/hero_banner.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             // On md and up, fill the screen. On mobile, auto-height.

@@ -15,13 +15,13 @@
         "name": "老虎虾",
         "description": "优质老虎虾，肉质鲜嫩，适合烧烤或爆炒。",
         "detailed_description": "肉质饱满，适合烧烤或清蒸 (31-35只每磅)",
-        "image": "./products/black_tiger_prawn.jpg"
+        "image": "/singha/products/black_tiger_prawn.jpg"
       },
       {
         "name": "鱿鱼圈",
         "description": "精选鱿鱼圈，适合炸制或搭配沙拉。",
         "detailed_description": "口感嫩滑，适合煎炸或炒制",
-        "image": "./products/sotong_ring.jpg"
+        "image": "/singha/products/sotong_ring.jpg"
       },
       {
         "name": "白虾",
@@ -30,7 +30,7 @@
           "small": "鲜甜可口，适合煮汤或油炸 (36-40只每磅)",
           "big": "鲜甜可口，适合煮汤或油炸 (41-50只每磅)"
         },
-        "image": "./products/white_prawn_4150.jpg"
+        "image": "/singha/products/white_prawn_4150.jpg"
       }
     ]
   },
@@ -70,17 +70,17 @@
       {
         "title": "快速送货",
         "description": "冷链运输，保证海鲜新鲜直达。",
-        "image": "./service_1.jpeg"
+        "image": "/singha/service_1.jpeg"
       },
       {
         "title": "品质保障",
         "description": "严格把控质量，提供最优海鲜。",
-        "image": "./service_2.jpeg"
+        "image": "/singha/service_2.jpeg"
       },
       {
         "title": "多样选择",
         "description": "鱼类、虾蟹类、贝类应有尽有。",
-        "image": "./service_3.jpeg"
+        "image": "/singha/service_3.jpeg"
       }
     ]
   },
