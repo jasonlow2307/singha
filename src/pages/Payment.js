@@ -34,6 +34,32 @@ const PaymentPage = ({ onNavigate }) => {
     }, 0);
 
   const handleConfirmOrder = () => {
+    // Generate the formatted timestamp (DDMMYYYYHHMM)
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, "0");
+    const month = String(now.getMonth() + 1).padStart(2, "0"); // Months are 0-indexed
+    const year = now.getFullYear();
+    const hours = String(now.getHours()).padStart(2, "0");
+    const minutes = String(now.getMinutes()).padStart(2, "0");
+    const formattedTimestamp = `${day}${month}${year}${hours}${minutes}`; // Example: 271220041750
+
+    // Combine the timestamp with the total price for the order number
+    const totalPrice = calculateTotal().toFixed(2);
+    const orderNumber = `${formattedTimestamp}-${totalPrice.replace(".", "")}`;
+
+    // Construct the message for WhatsApp
+    const orderDetails = shoppingCart
+      .map((item) => `ID: ${item.id}, Quantity: ${item.quantity}`)
+      .join("\n");
+
+    const message = encodeURIComponent(
+      `Hello! I would like to place an order. \n\nOrder Number: ${orderNumber}\n\nOrder Details:\n${orderDetails}\n\nTotal Price: RM ${totalPrice}`
+    );
+
+    // Open WhatsApp with the predefined message
+    window.open(`https://wa.me/60193205676?text=${message}`, "_blank");
+
+    // Show snackbar and navigate after opening WhatsApp
     setSnackbar({
       open: true,
       message: t("payment_page.order_confirmed_snackbar"),
