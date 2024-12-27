@@ -26,6 +26,9 @@ const App = () => {
     document.title = t("title"); // Assuming "title" is a key in your translations
   }, [t]);
 
+  // npm run deploy to deploy
+  // npm start for development
+
   return (
     <div
       style={{
