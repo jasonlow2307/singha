@@ -313,9 +313,9 @@ const Hero = ({ onNavigate }) => {
                         key={index}
                         variant="body1"
                         color="textSecondary"
-                        align="center"
                         sx={{
                           fontSize: { xs: "1rem", md: "1.2rem" },
+                          textAlign: { xs: "center", md: "left" },
                           mb: 2,
                         }}
                       >
