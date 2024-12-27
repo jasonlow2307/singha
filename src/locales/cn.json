@@ -89,5 +89,15 @@
     "title": "联系我们",
     "description": "如果您有任何问题或需要咨询，请随时联系我们，我们将竭诚为您服务！",
     "contact_button": "立即联系"
+  },
+  "payment_page": {
+    "title": "付款",
+    "scan_qr": "扫描以下二维码进行付款",
+    "product_name_label": "商品名称",
+    "quantity_label": "数量",
+    "subtotal_label": "小计",
+    "total_label": "总计",
+    "confirm_payment_button": "确认付款",
+    "order_confirmed_snackbar": "订单已确认！感谢您的购买。"
   }
 }

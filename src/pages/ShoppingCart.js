@@ -16,7 +16,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { useShoppingCart } from "../providers/ShoppingCartProvider";
 
-const ShoppingCartPage = () => {
+const ShoppingCartPage = ({ onNavigate }) => {
   const { shoppingCart } = useShoppingCart();
   const { t } = useTranslation();
   const [snackbar, setSnackbar] = useState({
@@ -37,6 +37,7 @@ const ShoppingCartPage = () => {
       open: true,
       message: t("shopping_cart_page.checkout_snackbar_message"),
     });
+    onNavigate("payment");
   };
 
   const handleCloseSnackbar = (event, reason) => {

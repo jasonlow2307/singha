@@ -10,6 +10,7 @@ import "./providers/i18n";
 import WhatsAppIcon from "./components/WhatsappIcon";
 import MobileNavBar from "./pages/MobileNavBar";
 import { useTranslation } from "react-i18next";
+import PaymentPage from "./pages/Payment";
 
 const App = () => {
   // State to toggle between Hero and ShoppingPage
@@ -40,7 +41,12 @@ const App = () => {
           <div style={{ flex: 1, overflow: "auto" }}>
             {currentPage === "home" && <Hero onNavigate={handleNavigate} />}
             {currentPage === "shopping" && <ShoppingPage />}
-            {currentPage === "shoppingCart" && <ShoppingCartPage />}
+            {currentPage === "shoppingCart" && (
+              <ShoppingCartPage onNavigate={handleNavigate} />
+            )}
+            {currentPage === "payment" && (
+              <PaymentPage onNavigate={handleNavigate} />
+            )}
           </div>
         </ShoppingCartProvider>
         ,

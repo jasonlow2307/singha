@@ -89,5 +89,15 @@
     "title": "Contact Us",
     "description": "If you have any questions or inquiries, feel free to contact us. We are here to assist you!",
     "contact_button": "Contact Now"
+  },
+  "payment_page": {
+    "title": "Payment",
+    "scan_qr": "Scan the QR code below to make payment",
+    "product_name_label": "Product Name",
+    "quantity_label": "Quantity",
+    "subtotal_label": "Subtotal",
+    "total_label": "Total",
+    "confirm_payment_button": "Confirm Payment",
+    "order_confirmed_snackbar": "Order confirmed! Thank you for your purchase."
   }
 }
