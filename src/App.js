@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./pages/Header";
 import Hero from "./pages/Hero";
 import Footer from "./pages/Footer";
@@ -9,14 +9,21 @@ import { ShoppingCartProvider } from "./providers/ShoppingCartProvider";
 import "./providers/i18n";
 import WhatsAppIcon from "./components/WhatsappIcon";
 import MobileNavBar from "./pages/MobileNavBar";
+import { useTranslation } from "react-i18next";
 
 const App = () => {
   // State to toggle between Hero and ShoppingPage
   const [currentPage, setCurrentPage] = useState("home");
+  const { t } = useTranslation();
 
   const handleNavigate = (page) => {
     setCurrentPage(page);
   };
+
+  useEffect(() => {
+    // Dynamically update the document title
+    document.title = t("title"); // Assuming "title" is a key in your translations
+  }, [t]);
 
   return (
     <div
