@@ -52,8 +52,11 @@ const ShoppingPage = () => {
 
   const handleAddToCart = (product, quantity) => {
     addToCart(
-      { ...product, prices: product.prices },
-      quantity // Pass prices to the shopping cart
+      {
+        ...product,
+        nameKey: `products_section.products.${product.id - 1}.name`, // Store the translation key
+      },
+      quantity
     );
 
     // Display snackbar

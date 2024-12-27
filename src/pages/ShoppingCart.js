@@ -170,7 +170,7 @@ const ShoppingCartPage = () => {
                           fontSize: { xs: "0.9rem", md: "1.1rem" },
                         }}
                       >
-                        {item.name}
+                        {t(item.nameKey)}
                       </Typography>
                     </TableCell>
                     <TableCell
