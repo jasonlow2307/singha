@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useShoppingCart } from "../providers/ShoppingCartProvider";
-import { Image } from "@mui/icons-material";
 
 const PaymentPage = ({ onNavigate }) => {
   const { shoppingCart } = useShoppingCart();
@@ -111,7 +110,12 @@ const PaymentPage = ({ onNavigate }) => {
         >
           {t("payment_page.scan_qr")}
         </Typography>
-        <img src="/singha/about_us.png" width={400} borderRadius={25} />
+        <img
+          src="/singha/about_us.png"
+          alt="qr_code"
+          width={400}
+          borderRadius={25}
+        />
       </Box>
 
       {/* Total Amount and Breakdown */}

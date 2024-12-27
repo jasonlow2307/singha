@@ -85,6 +85,26 @@ const Footer = () => {
       <Typography variant="body2" color="textSecondary">
         © {new Date().getFullYear()} Singha. All rights reserved.
       </Typography>
+
+      <Typography variant="body2" color="textSecondary" sx={{ mt: 2 }}>
+        Designed and Developed by{" "}
+        <Box
+          component="a"
+          href="https://github.com/jasonlow2307"
+          target="_blank"
+          rel="noopener noreferrer"
+          sx={{
+            textDecoration: "none",
+            color: "inherit", // Inherit the color from parent
+            "&:hover": {
+              textDecoration: "underline", // Optional for hover effect
+              cursor: "pointer", // Change cursor on hover
+            },
+          }}
+        >
+          Jason Low
+        </Box>
+      </Typography>
     </Box>
   );
 };
