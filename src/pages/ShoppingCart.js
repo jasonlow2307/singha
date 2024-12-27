@@ -140,17 +140,43 @@ const ShoppingCartPage = () => {
                       },
                     }}
                   >
+                    {/* Product Image */}
                     <TableCell
+                      align="center"
                       sx={{
-                        fontSize: { xs: "0.8rem", md: "1.1rem" }, // Responsive font size
+                        fontSize: { xs: "0.8rem", md: "1.1rem" },
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "10px",
+                        border: "none",
                       }}
                     >
-                      {item.name}
+                      <Box
+                        component="img"
+                        src={item.image}
+                        alt={item.name}
+                        sx={{
+                          width: { xs: "60px", md: "120px" },
+                          height: { xs: "60px", md: "120px" },
+                          borderRadius: "8px",
+                          objectFit: "cover",
+                          boxShadow: "0px 2px 5px rgba(0,0,0,0.1)",
+                          mr: "20px",
+                        }}
+                      />
+                      <Typography
+                        sx={{
+                          fontWeight: "bold",
+                          fontSize: { xs: "0.9rem", md: "1.1rem" },
+                        }}
+                      >
+                        {item.name}
+                      </Typography>
                     </TableCell>
                     <TableCell
                       align="center"
                       sx={{
-                        fontSize: { xs: "0.8rem", md: "1.1rem" }, // Responsive font size
+                        fontSize: { xs: "0.8rem", md: "1.1rem" },
                       }}
                     >
                       RM {price.toFixed(2)}
@@ -158,7 +184,7 @@ const ShoppingCartPage = () => {
                     <TableCell
                       align="center"
                       sx={{
-                        fontSize: { xs: "0.8rem", md: "1.1rem" }, // Responsive font size
+                        fontSize: { xs: "0.8rem", md: "1.1rem" },
                       }}
                     >
                       {item.quantity}
@@ -166,7 +192,7 @@ const ShoppingCartPage = () => {
                     <TableCell
                       align="center"
                       sx={{
-                        fontSize: { xs: "0.8rem", md: "1.1rem" }, // Responsive font size
+                        fontSize: { xs: "0.8rem", md: "1.1rem" },
                       }}
                     >
                       RM {subtotal.toFixed(2)}

@@ -14,7 +14,7 @@ import { useShoppingCart } from "../providers/ShoppingCartProvider";
 import { useTranslation } from "react-i18next";
 
 const ShoppingPage = () => {
-  const { shoppingCart, addToCart } = useShoppingCart();
+  const { addToCart } = useShoppingCart();
   const { t } = useTranslation();
 
   const [snackbar, setSnackbar] = useState({ open: false, message: "" });
