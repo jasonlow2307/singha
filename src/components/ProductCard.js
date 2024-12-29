@@ -74,7 +74,7 @@ const ProductCard = ({ product, onAddToCart }) => {
             flexDirection: "column",
             alignItems: "center",
             gap: 1,
-            my: 2,
+            mb: 2,
           }}
         >
           <Typography
@@ -98,6 +98,15 @@ const ProductCard = ({ product, onAddToCart }) => {
           >
             {t("product_card.bundle_price_label")}: RM{" "}
             {product.prices.bundle.toFixed(2)}
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{
+              textAlign: "center",
+              fontSize: "12px",
+            }}
+          >
+            {t("shopping_page.bundle_price_note")}
           </Typography>
         </Box>
 
