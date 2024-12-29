@@ -55,7 +55,8 @@
     "price_label": "Price",
     "quantity_label": "Quantity",
     "product_name_label": "Product Name",
-    "checkout_snackbar_message": "Processing checkout..."
+    "checkout_snackbar_message": "Processing checkout...",
+    "shopping_page": "Continue shopping"
   },
   "about_us_section": {
     "title": "About Us",

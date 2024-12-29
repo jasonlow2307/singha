@@ -55,7 +55,8 @@
     "price_label": "单价",
     "quantity_label": "数量",
     "product_name_label": "产品名称",
-    "checkout_snackbar_message": "正在结账..."
+    "checkout_snackbar_message": "正在结账...",
+    "shopping_page": "继续购物"
   },
   "about_us_section": {
     "title": "关于我们",

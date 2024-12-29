@@ -43,7 +43,9 @@ const App = () => {
           <MobileNavBar onNavigate={handleNavigate} />
           <div style={{ flex: 1, overflow: "auto" }}>
             {currentPage === "home" && <Hero onNavigate={handleNavigate} />}
-            {currentPage === "shopping" && <ShoppingPage />}
+            {currentPage === "shopping" && (
+              <ShoppingPage onNavigate={handleNavigate} />
+            )}
             {currentPage === "shoppingCart" && (
               <ShoppingCartPage onNavigate={handleNavigate} />
             )}

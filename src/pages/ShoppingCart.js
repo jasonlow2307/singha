@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useShoppingCart } from "../providers/ShoppingCartProvider";
+import { Icon } from "@iconify/react";
 
 const ShoppingCartPage = ({ onNavigate }) => {
   const { shoppingCart } = useShoppingCart();
@@ -43,6 +44,10 @@ const ShoppingCartPage = ({ onNavigate }) => {
   const handleCloseSnackbar = (event, reason) => {
     if (reason === "clickaway") return;
     setSnackbar({ open: false, message: "" });
+  };
+
+  const navigateToShopping = () => {
+    onNavigate("shopping");
   };
 
   return (
@@ -270,6 +275,47 @@ const ShoppingCartPage = ({ onNavigate }) => {
           {t("shopping_cart_page.checkout_button")}
         </Button>
       )}
+
+      <Button
+        variant="contained"
+        sx={{
+          bgcolor: "#FF6F00",
+          color: "#fff",
+          textTransform: "none",
+          borderRadius: 25, // Slightly more rounded for a softer look
+          px: 4,
+          mt: 5,
+          fontSize: "1.1rem", // Increase font size
+          fontWeight: "bold", // Make the text bold
+          boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.2)", // Add a subtle shadow
+          transition: "transform 0.2s ease, box-shadow 0.2s ease", // Add smooth animation
+          "&:hover": {
+            bgcolor: "#d97801",
+            transform: "scale(1.05)", // Slight scaling on hover for emphasis
+            boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.3)", // Increase shadow on hover
+          },
+          maxWidth: "250px", // Slightly larger max width
+          height: "60px", // Increase button height
+        }}
+        onClick={navigateToShopping}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            mr: 1,
+          }}
+        >
+          <Icon
+            icon="material-symbols:shopping-cart"
+            width="30"
+            height="30"
+            color="#ffffff"
+          />
+        </Box>
+        <Typography>{t("shopping_cart_page.shopping_page")}</Typography>
+      </Button>
 
       {/* Snackbar */}
       <Snackbar
